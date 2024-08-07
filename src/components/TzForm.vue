@@ -5,7 +5,7 @@
         <h1 class="text-center">User Information Form</h1>
         <form @submit.prevent="submitForm">
           <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-6">
               <label for="username" class="form-label">Username:</label>
               <input
                 type="text"
@@ -16,7 +16,7 @@
               />
             </div>
 
-            <div class="col-md-6">
+            <div class="col-6">
               <label for="password" class="form-label">Password:</label>
               <input
                 type="password"
@@ -28,7 +28,7 @@
           </div>
 
           <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-6">
               <div class="form-check">
                 <input
                   type="checkbox"
@@ -39,7 +39,7 @@
                 <label class="from-check-label" for="isAustralian">Australian Resident?</label>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-6">
               <label for="gender" class="form-label">Gender</label>
               <select class="form-select" id="gender" v-model="formData.gender">
                 <option value="female">Female</option>
