@@ -6,7 +6,7 @@
         <form @submit.prevent="submitForm">
           <div class="row mb-3">
             <div class="col-md-6">
-              <label for="username" class="form-lable">Username:</label>
+              <label for="username" class="form-label">Username:</label>
               <input
                 type="text"
                 class="form-control"
@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-md-6">
-              <label for="password" class="form-lable">Password:</label>
+              <label for="password" class="form-label">Password:</label>
               <input
                 type="password"
                 class="form-control"
@@ -36,11 +36,11 @@
                   id="isAustralian"
                   v-model="formData.isAustralian"
                 />
-                <label class="from-check-lable" for="isAustralian">Australian Resident?</label>
+                <label class="from-check-label" for="isAustralian">Australian Resident?</label>
               </div>
             </div>
             <div class="col-md-6">
-              <label for="gender" class="form-lable">Gender</label>
+              <label for="gender" class="form-label">Gender</label>
               <select class="form-select" id="gender" v-model="formData.gender">
                 <option value="female">Female</option>
                 <option value="male">Male</option>
@@ -50,7 +50,7 @@
           </div>
 
           <div class="mb-3">
-            <lable for="reason" class="form-lable">Reason for joining</lable>
+            <label for="reason" class="form-label">Reason for joining</label>
             <textarea
               class="form-control"
               id="reason"
@@ -107,6 +107,13 @@ const submitForm = () => {
   submittedCards.value.push({
     ...formData.value
   })
+}
+const clearForm = () => {
+  formData.value.username = ''
+  formData.value.password = ''
+  formData.value.isAustralian = false
+  formData.value.gender = ''
+  formData.value.reason = ''
 }
 </script>
 
