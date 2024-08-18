@@ -40,8 +40,11 @@
                   class="form-check-input"
                   id="isAustralian"
                   v-model="formData.isAustralian"
+                  @blur="() => validateAus(true)"
+                  @input="() => validateAus(false)"
                 />
                 <label class="from-check-label" for="isAustralian">Australian Resident?</label>
+                <div v-if="errors.isAustralian" class="text-danger">{{ errors.isAustralian }}</div>
               </div>
             </div>
             <div class="col-6">
@@ -192,7 +195,13 @@ const validateGender = (blur) => {
   }
 }
 
-const validateAus = (blur) => {}
+const validateAus = (blur) => {
+  if (!formData.value.isAustralian) {
+    if (blur) errors.value.isAustralian = 'Please select'
+  } else {
+    errors.value.isAustralian = null
+  }
+}
 
 const validateReason = (blur) => {
   if (formData.value.reason.length < 4) {
