@@ -7,11 +7,10 @@
         <input
           type="text"
           id="username"
-          v-model="username"
-          @blur="validateUsername"
+          v-model="formData.username"
           class="form-control"
+          placeholder="Enter your username"
         />
-        <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
       </div>
 
       <div class="form-group">
@@ -19,52 +18,38 @@
         <input
           type="password"
           id="password"
-          v-model="password"
-          @blur="validatePassword"
+          v-model="formData.password"
           class="form-control"
+          placeholder="Enter your password"
         />
-        <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
       </div>
 
       <button type="submit" class="btn btn-primary">Login</button>
+      <div v-if="errorMessage" class="text-danger">{{ errorMessage }}</div>
     </form>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { login } from '@/auth.js'
 
-const username = ref('')
-const password = ref('')
-
-const errors = ref({
-  username: null,
-  password: null,
+const formData = ref({
+  username: '',
+  password: ''
 })
 
-const validateUsername = () => {
-  if (!username.value) {
-    errors.value.username = 'Username is required'
-  } else {
-    errors.value.username = null
-  }
-}
-
-const validatePassword = () => {
-  if (!password.value) {
-    errors.value.password = 'Password is required'
-  } else {
-    errors.value.password = null
-  }
-}
+const errorMessage = ref('')
 
 const submitLogin = () => {
-  validateUsername()
-  validatePassword()
+  const hardCodedUsername = 'test'
+  const hardCodedPassword = 'Qwer!234'
 
-  if (!errors.value.username && !errors.value.password) {
-    alert('Login successful!')
-    // Handle successful login logic here, like redirecting to another page
+  if (formData.value.username === hardCodedUsername && formData.value.password === hardCodedPassword) {
+    login()  
+    window.location.reload() 
+  } else {
+    errorMessage.value = 'Invalid username or password'
   }
 }
 </script>
@@ -106,6 +91,5 @@ const submitLogin = () => {
 
 .text-danger {
   color: red;
-  font-size: 0.875rem;
 }
 </style>
