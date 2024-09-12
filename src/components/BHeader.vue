@@ -17,6 +17,10 @@
         <li class="nav-item" v-if="isAuthenticated">
           <a href="#" class="nav-link" @click="handleLogout">Logout</a>
         </li>
+
+        <li class="nav-item">
+          <router-link to="/addbook" class="nav-link" active-class="active">Add Book</router-link>
+        </li>
       </ul>
     </header>
   </div>
