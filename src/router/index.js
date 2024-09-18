@@ -8,8 +8,14 @@ import AddBookView from '@/view/AddBookView.vue'
 import FirebaseSigninView from '@/view/FirebaseSigninView.vue'
 import FirebaseRegisterView from '@/view/FirebaseRegisterView.vue'
 import LogoutView from '@/view/LogoutView.vue'
+import GetBookCountView from '@/view/GetBookCountView.vue'
 
 const routes = [
+  {
+    path: '/GetBookCount',
+    name: 'GetBookCount',
+    component: GetBookCountView
+  },
   {
     path: '/',
     name: 'Home',
