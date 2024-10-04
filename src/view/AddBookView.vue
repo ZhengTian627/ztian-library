@@ -56,10 +56,12 @@ export default {
           return;
         }
 
+        const upperCaseName = name.value.toUpperCase();
+
         // add 
         await addDoc(collection(db, 'books'), {
           isbn: isbnNumber,
-          name: name.value,
+          name: upperCaseName,
         });
         alert('Book added successfully');
 

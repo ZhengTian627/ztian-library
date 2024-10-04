@@ -19,7 +19,7 @@ export default {
         async getBookInfoAPI() {
             try {
                 
-                const response = await axios.get('https://countbooks-lobkotdo4a-uc.a.run.app');
+                const response = await axios.get('https://getbooks-lobkotdo4a-uc.a.run.app');
                 this.jsondata = response.data; 
                 this.error = null;
             } catch (error) {
