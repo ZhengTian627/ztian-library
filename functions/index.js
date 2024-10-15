@@ -52,8 +52,33 @@ exports.getBooks = onRequest((req, res) => {
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
+const functions = require("firebase-functions");
+const axios = require("axios");
 
-// exports.helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+// 替换为你的 OpenWeatherMap API 密钥
+const apiKey = "72315f628ec2447a29c06f3f7b68a3d1";
+
+exports.getWeather = functions.https.onRequest((req, res) => {
+  const city = req.query.q;
+  const lat = req.query.lat;
+  const lon = req.query.lon;
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}`;
+
+  // 根据请求参数构造 API 请求
+  if (city) {
+    apiUrl += `&q=${city}`;
+  } else if (lat && lon) {
+    apiUrl += `&lat=${lat}&lon=${lon}`;
+  }
+
+  // 使用 axios 代理 API 请求
+  axios
+      .get(apiUrl)
+      .then((response) => {
+        res.json(response.data);
+      })
+      .catch((error) => {
+        res.status(500).json({error: "Error fetching weather data"});
+      });
+});
