@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '',
+  base: '/ztian-library/', 
   build: {
     outDir: 'dist'
   },
@@ -20,4 +20,3 @@ export default defineConfig({
     }
   }
 })
-
